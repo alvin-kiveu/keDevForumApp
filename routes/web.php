@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,7 @@ Route::get('/register', function () {
 Route::get('/forgot-password', function () {
     return view('auth/forgotpassword');
 });
+
+//post routes
+
+Route::post('/registerUser', 'AuthController@registerUser');

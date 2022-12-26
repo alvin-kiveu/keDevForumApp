@@ -14,18 +14,23 @@
                 </div>
                 <div class="col-auto fs--1 text-600"><span class="mb-0 undefined">or</span> <span><a href="/login">Login</a></span></div>
               </div>
-              <form>
-                <label for="basic-checkbox">Email</label>
-                <div class="mb-3"><input class="form-control" type="email" placeholder="Email" /></div>
-                <label for="basic-checkbox">Username</label>
-                <div class="mb-3"><input class="form-control" type="text" placeholder="Username" /></div>
-                <label for="basic-checkbox">Password</label>
-                <div class="mb-3"><input class="form-control" type="password" placeholder="Password" /></div>
-                <label for="basic-checkbox">Cornfirm Password</label>
-                <div class="mb-3"><input class="form-control" type="password" placeholder="Cornfirm Password" /></div>
 
-                <div class="mb-3"><button class="btn btn-primary d-block w-100 mt-3" type="submit" name="submit">Log in</button></div>
-              </form>
+              <form action="/registerUser" method="POST">
+                @csrf
+                <label for="basic-checkbox">Fullnames</label>
+                <div class="mb-3"><input name="name" class="form-control" type="text" placeholder="Fullnames" required/></div>
+                <label for="basic-checkbox">Email</label>
+                <div class="mb-3"><input name="email" class="form-control" type="email" placeholder="Email" required/></div>
+                <label for="basic-checkbox">Username</label>
+                <div class="mb-3"><input name="username" class="form-control" type="text" placeholder="Username" required/></div>
+                <label for="basic-checkbox">Password</label>
+                <div class="mb-3"><input name="password" class="form-control" type="password" placeholder="Password" required/></div>
+                <label for="basic-checkbox">Cornfirm Password</label>
+                <div class="mb-3"><input name="password_confirmation" class="form-control" type="password" placeholder="Cornfirm Password" required/></div>
+
+                <div class="mb-3"><button class="btn btn-primary text-secondary d-block w-100 mt-3" type="submit" name="submit">Sign Up</button></div>
+
+            </form>
               {{-- <div class="position-relative mt-4">
                 <hr />
                 <div class="divider-content-center">or log in with</div>
