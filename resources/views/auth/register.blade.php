@@ -14,9 +14,22 @@
                 </div>
                 <div class="col-auto fs--1 text-600"><span class="mb-0 undefined">or</span> <span><a href="/login">Login</a></span></div>
               </div>
+                {{-- Error Handling --}}
+                @if (session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
 
-              <form action="/registerUser" method="POST">
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+              <form action="/registeruser" method="POST">
                 @csrf
+
                 <label for="basic-checkbox">Fullnames</label>
                 <div class="mb-3"><input name="name" class="form-control" type="text" placeholder="Fullnames" required/></div>
                 <label for="basic-checkbox">Email</label>

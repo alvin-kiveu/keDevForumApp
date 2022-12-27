@@ -13,9 +13,23 @@
                   </div>
                   <div class="col-auto fs--1 text-600"><span class="mb-0 undefined">or</span> <span><a href="/login">Login</a></span></div>
                 </div>
-                <form>
+                      {{-- Error Handling --}}
+                      @if (session('error'))
+                      <div class="alert alert-danger">
+                          {{ session('error') }}
+                      </div>
+                      @endif
+
+                      @if (session('success'))
+                      <div class="alert alert-success">
+                          {{ session('success') }}
+                      </div>
+                      @endif
+
+                      <form action="/postuserfeed" method="POST">
+                      @csrf
                   <label for="basic-checkbox">Email</label>
-                  <div class="mb-3"><input class="form-control" type="text" placeholder="Email" /></div>
+                  <div class="mb-3"><input name="email" class="form-control" type="email" placeholder="Email" required/></div>
 
                   <div class="mb-3"><button class="btn btn-primary text-secondary d-block w-100 mt-3" type="submit" name="submit">Forget Password</button></div>
                 </form>

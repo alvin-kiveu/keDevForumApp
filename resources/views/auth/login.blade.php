@@ -13,18 +13,32 @@
                   </div>
                   <div class="col-auto fs--1 text-600"><span class="mb-0 undefined">or</span> <span><a href="/register">Create an account</a></span></div>
                 </div>
-                <form>
-                  <label for="basic-checkbox">Email or Username</label>
-                  <div class="mb-3"><input class="form-control" type="text" placeholder="Email or Username" /></div>
+                {{-- Error Handling --}}
+                @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+                @endif
+
+                @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+                @endif
+
+                <form action="/loginuser" method="POST">
+                @csrf
+                  <label for="basic-checkbox">Email</label>
+                  <div class="mb-3"><input name="email" class="form-control" type="email" placeholder="Email" required/></div>
                   <label for="basic-checkbox">Password</label>
-                  <div class="mb-3"><input class="form-control" type="password" placeholder="Password" /></div>
+                  <div class="mb-3"><input name="password" class="form-control" type="password" placeholder="Password" required/></div>
                   <div class="row flex-between-center">
                     <div class="col-auto">
                       <div class="form-check mb-0"><input class="form-check-input" type="checkbox" id="basic-checkbox" checked="checked" /><label class="form-check-label mb-0" for="basic-checkbox">Remember me</label></div>
                     </div>
                     <div class="col-auto"><a class="fs--1" href="/forgot-password">Forgot Password?</a></div>
                   </div>
-                  <div class="mb-3"><button class="btn btn-primary text-secondary d-block w-100 mt-3" type="submit" name="submit">Sign in</button></div>
+                  <div class="mb-3"><button class="btn btn-primary text-secondary  d-block w-100 mt-3" type="submit" name="submit">Sign in</button></div>
                 </form>
                 <div class="position-relative mt-4">
                   <hr />
