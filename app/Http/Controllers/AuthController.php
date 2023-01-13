@@ -13,7 +13,6 @@ class AuthController extends Controller
 {
     public function registerUser(Request $request)
     {
-
         $email = $request->input('email');
         $username = $request->input('username');
         $name = $request->input('name');
@@ -31,17 +30,17 @@ class AuthController extends Controller
                     $password = bcrypt($password);
                     $data = array('fulnames' => $name, 'email' => $email, 'username' => $username, 'password' => $password);
                     //CHECK IF EMAIL IS ALREADY REGISTERED FROM MYSQL DATABASE ON TABLE users
-                    $emailCheck = DB::table('users')->where('email', $email)->first();
+                    $emailCheck = DB::table('members')->where('email', $email)->first();
                     if ($emailCheck) {
                         return redirect()->back()->with('error', 'Email already registered');
                     } else {
                         //CHECK IF USERNAME IS ALREADY REGISTERED FROM MYSQL DATABASE ON TABLE users
-                        $usernameCheck = DB::table('users')->where('username', $username)->first();
+                        $usernameCheck = DB::table('members')->where('username', $username)->first();
                         if ($usernameCheck) {
                             return redirect()->back()->with('error', 'Username already registered');
                         } else {
                             //INSERT DATA INTO MYSQL DATABASE ON TABLE users
-                            DB::table('users')->insert($data);
+                            DB::table('members')->insert($data);
                             //CREATE SESSION
                             $request->session()->put('email', $email);
                             return redirect('/feeds')->with('success', 'Registration successful to keDevForum');
@@ -60,7 +59,7 @@ class AuthController extends Controller
         $email = $request->input('email');
         $password = $request->input('password');
         //CHECK IF EMAIL IS ALREADY REGISTERED FROM MYSQL DATABASE ON TABLE users
-        $emailCheck = DB::table('users')->where('email', $email)->first();
+        $emailCheck = DB::table('members')->where('email', $email)->first();
         if ($emailCheck) {
             //CHECK IF PASSWORD IS CORRECT
             if (password_verify($password, $emailCheck->password)) {
@@ -89,7 +88,7 @@ class AuthController extends Controller
     {
         $email = $request->input('email');
         //CHECK IF EMAIL IS ALREADY REGISTERED FROM MYSQL DATABASE ON TABLE users
-        $emailCheck = DB::table('users')->where('email', $email)->first();
+        $emailCheck = DB::table('members')->where('email', $email)->first();
         if ($emailCheck) {
             //SEND AN EMAIL TO THE USER WITH A LINK TO RESET PASSWORD
             // $mail = new PHPMailer(true);

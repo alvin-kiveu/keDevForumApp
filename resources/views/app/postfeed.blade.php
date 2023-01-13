@@ -34,18 +34,19 @@
                             <i class="fa-solid fa-heading"></i> Heading
                         </label>
                         <input class="shadow-none form-control rounded-0 resize-none px-x1 border-y-2 border-200"
-                            id="post-title" type="text" placeholder="Type post heading..." />
+                            id="post-title" type="text" name="heading" placeholder="Type post heading..." required />
                     </div>
                     <label for="file-upload" class="custom-file-upload">
                         <i class="fa-solid fa-circle-info"></i> Details
                     </label>
-                    <textarea id="editor" class="ckeditor shadow-none form-control rounded-0 resize-none px-x1 border-y-2 border-200"
-                        placeholder="What do you want to talk about?" rows="4"></textarea>
+                    <textarea id="editor" name="description"
+                        class="ckeditor shadow-none form-control rounded-0 resize-none px-x1 border-y-2 border-200"
+                        placeholder="What do you want to talk about?" rows="4" required></textarea>
                     <div class="d-flex align-items-center ps-x1 border border-200">
                         <label class="text-nowrap mb-0 me-2" for="hash-tags">
                             <i class="fa-solid fa-hashtag"></i><span class="fw-medium fs--1">Add
                                 hashtag</span></label><input class="form-control border-0 fs--1 shadow-none" id="hash-tags"
-                            type="text" placeholder="Help the right person to see" />
+                            type="text" name="hashtag" placeholder="Help the right person to see" required />
                     </div>
                     <div class="row g-0 justify-content-between mt-3 px-x1 pb-3">
                         <div class="col-12">
@@ -138,18 +139,22 @@
                                         </label>
                                     </div>
 
-
-
-
-
                                 </div>
 
 
                             </div>
 
                         </div>
+                        <style>
+                            button:not(:enabled),
+                            [type=button]:not(:enabled),
+                            [type=reset]:not(:enabled),
+                            [type=submit]:not(:enabled) {
+                                cursor: pointer;
+                            }
+                        </style>
                         <div class="col-auto">
-                            <button class="btn btn-primary btn-sm px-4 px-sm-5" type="submit">POST</button>
+                            <input class="btn btn-primary btn-sm px-4 px-sm-5" type="submit" value="POST" />
                         </div>
                     </div>
                 </form>
