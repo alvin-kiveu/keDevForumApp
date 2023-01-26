@@ -26,3 +26,8 @@ Make a Controler with the following command:
 ```bach
 php artisan make:controller AuthController
 ```
+
+
+Umeskia kwa kufuata hatua hizi:
+
+1.  Create a new database
