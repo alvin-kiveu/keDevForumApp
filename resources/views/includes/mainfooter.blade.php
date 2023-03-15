@@ -1,5 +1,8 @@
 </div>
 </div>
+</div>
+</div>
+</div>
 <div class="d-flex flex-column" style="min-height: 100vh;">
     <script>
         ClassicEditor

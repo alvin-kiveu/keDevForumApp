@@ -23,14 +23,14 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="keDevForum">
     <meta name="msapplication-TileColor" content="#0000000">
-    <meta name="msapplication-TileImage" content="/assets/img/logo.png">
+    <meta name="msapplication-TileImage" content="/assets/img/newKedev.png">
     <meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/logo.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/logo.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/logo.png">
-    <link rel="manifest" href="/assets/img/logo.png">
-    <link rel="mask-icon" href="/assets/img/logo.png" color="#5bbad5">
-    <link rel="shortcut icon" href="/assets/img/logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/newKedev.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/newKedev.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/newKedev.png">
+    <link rel="manifest" href="/assets/img/newKedev.png">
+    <link rel="mask-icon" href="/assets/img/newKedev.png" color="#5bbad5">
+    <link rel="shortcut icon" href="/assets/img/newKedev.png">
     <title>keDevForum</title>
     <meta name="theme-color" content="#000000">
     <script src="/vendors/simplebar/simplebar.min.js"></script>

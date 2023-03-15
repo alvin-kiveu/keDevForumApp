@@ -24,14 +24,14 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="keDevForum">
     <meta name="msapplication-TileColor" content="#0000000">
-    <meta name="msapplication-TileImage" content="/assets/img/logo.png">
+    <meta name="msapplication-TileImage" content="/assets/img/newKedev.png">
     <meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/logo.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/logo.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/logo.png">
-    <link rel="manifest" href="/assets/img/logo.png">
-    <link rel="mask-icon" href="/assets/img/logo.png" color="#5bbad5">
-    <link rel="shortcut icon" href="/assets/img/logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/newKedev.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/newKedev.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/newKedev.png">
+    <link rel="manifest" href="/assets/img/newKedev.png">
+    <link rel="mask-icon" href="/assets/img/newKedev.png" color="#5bbad5">
+    <link rel="shortcut icon" href="/assets/img/newKedev.png">
     <title>keDevForum</title>
     <meta name="theme-color" content="#000000">
     <script src="/vendors/simplebar/simplebar.min.js"></script>
@@ -44,6 +44,7 @@
     <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="scss/main.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://kit.fontawesome.com/589a5b1ebd.js" crossorigin="anonymous"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
@@ -55,63 +56,96 @@
 <body>
 
     <body>
-        <nav class="navbar navbar-expand-lg bg-primary navbar-glass fixed-top"
-            data-double-top-nav="data-double-top-nav">
-            <div class="container">
-                <div class="navbar-brand text-secondary font-weight-bold">ke<span class="text-white">Dev</span>Forum
-                </div>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <li class="nav-item active">
-                            <a class="nav-link  text-light" href="/">Feeds</a>
-                        </li>
-                        <?php
-                    if (session()->has('userEmailLogin')) {
-                    ?>
-                        <li class="nav-item">
-                            <a class="nav-link  text-light" href="/postfeed">Post</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link  text-light" href="#">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link  text-light" href="#">Settings</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link  text-light" href="#">FAQ</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link  text-light" href="#">Terms</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link  text-light" href="#">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link  text-light" href="#">Jobs</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link  text-light" href="/logout">logout</a>
-                        </li>
-                        <?php
-                    } else {
-                    ?>
 
-                        <li class="nav-item active">
-                            <a class="nav-link  text-light" href="/login">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link  text-light" href="/register">Register</a>
-                        </li>
-                        <?php
-                    }
-                    ?>
-                    </ul>
-                </div>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-        </nav>
-        <div class="container mt-6">
+        <div class="container-fluid">
             <div class="row">
+
+                <div class="col-2  bg-primary" id="main">
+                    <nav class="navbar navbar-expand-lg  bg-primary navbar-glass display-block"
+                        data-double-top-nav="data-double-top-nav">
+
+                        <div class="navbar-brand text-secondary font-weight-bold">
+                            {{-- ke<span class="text-white">Dev</span>Forum --}}
+                            <img src="/assets/img/newKedev.png" alt="kedevforum">
+                        </div>
+                        <hr />
+                        {{-- CREATE PROFIE --}}
+                        <div class="row">
+                            <div class="col-12">
+
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h6 class="text-secondary font-weight-bold">Username</h6>
+                                            <p class="text-secondary">Fullname</p>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <hr />
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                                    <div class="row">
+
+                                        <li class="nav-item active col-6">
+                                            <a class="nav-link" href="/">Feeds</a>
+                                        </li>
+                                        <?php
+                                if (session()->has('userEmailLogin')) {
+                                ?>
+                                        <li class="nav-item col-6">
+                                            <a class="nav-link" href="/postfeed">Post</a>
+                                        </li>
+                                        <li class="nav-item col-6">
+                                            <a class="nav-link" href="#">Profile</a>
+                                        </li>
+                                        <li class="nav-item col-6">
+                                            <a class="nav-link" href="#">Settings</a>
+                                        </li>
+                                        <li class="nav-item col-6">
+                                            <a class="nav-link" href="#">FAQ</a>
+                                        </li>
+                                        <li class="nav-item col-6">
+                                            <a class="nav-link" href="#">Terms</a>
+                                        </li>
+                                        <li class="nav-item col-6">
+                                            <a class="nav-link" href="#">Privacy</a>
+                                        </li>
+                                        <li class="nav-item col-6">
+                                            <a class="nav-link" href="#">Jobs</a>
+                                        </li>
+                                        <li class="nav-item active col-6">
+                                            <a class="nav-link" href="/logout">logout</a>
+                                        </li>
+                                        <?php
+                                } else {
+                                ?>
+
+                                        <li class="nav-item active col-6">
+                                            <a class="nav-link" href="/login">Login</a>
+                                        </li>
+                                        <li class="nav-item col-6">
+                                            <a class="nav-link" href="/register">Register</a>
+                                        </li>
+                                        <?php
+                                }
+                                ?>
+                                    </div>
+                                </ul>
+                            </div>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                                aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+
+                    </nav>
+                </div>
+
+
+
+                <div class="col-10">
+                    <div class="container-fluid mt-6">
+                        <div class="row">
