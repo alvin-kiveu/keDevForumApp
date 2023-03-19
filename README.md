@@ -32,4 +32,8 @@ Umeskia kwa kufuata hatua hizi:
 
 1.  Create a new database
 
+Run laravel app on mobile  
+```
+php artisan serve --host 192.168.8.118 --port 80
+```
 

@@ -42,6 +42,14 @@ Route::get('/postfeed', function () {
     return view('app/postfeed');
 });
 
+Route::get('/dev/{id}', function ($id) {
+    return view('app/viewprofile', ['id' => $id]);
+});
+
+Route::get('/devit/{id}', function ($id) {
+    return view('app/devit', ['id' => $id]);
+});
+
 //post routes
 
 Route::post('/registeruser', [AuthController::class, 'registerUser']);

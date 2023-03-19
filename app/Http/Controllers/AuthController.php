@@ -15,7 +15,13 @@ class AuthController extends Controller
     {
         $email = $request->input('email');
         $username = $request->input('username');
+        //REMOVE SPACE FROM $username
+        $username = str_replace(' ', '', $username);
         $name = $request->input('name');
+        //capitalize first letter of $name
+        $name = ucfirst($name);
+        //Genarete random user id
+        $devkdfid = rand(1000000000, 9999999999);
         $password = $request->input('password');
         //CHECK IF PASSWORDS MATCH
         if (DB::connection()->getDatabaseName()) {
@@ -28,7 +34,7 @@ class AuthController extends Controller
                 } else {
                     //HASH PASSWORD
                     $password = bcrypt($password);
-                    $data = array('fulnames' => $name, 'email' => $email, 'username' => $username, 'password' => $password);
+                    $data = array('devkdfid' => $devkdfid, 'fulnames' => $name, 'email' => $email, 'username' => $username, 'password' => $password);
                     //CHECK IF EMAIL IS ALREADY REGISTERED FROM MYSQL DATABASE ON TABLE users
                     $emailCheck = DB::table('members')->where('email', $email)->first();
                     if ($emailCheck) {
@@ -64,8 +70,14 @@ class AuthController extends Controller
             //CHECK IF PASSWORD IS CORRECT
             if (password_verify($password, $emailCheck->password)) {
                 //CREATE SESSION
-                $request->session()->put('userEmailLogin', $emailCheck->email);
-                return redirect('/feeds')->with('success', 'Login successfully to keDevForum');
+                $request->session()->put('userEmailLogin', $email);
+                $userDetails = DB::table('members')->where('email', $email)->get();
+                foreach ($userDetails as $user) {
+                    $userDevKdfId = $user->devkdfid;
+                    $userUsername = $user->username;
+                }
+                $request->session()->put('userDevKdfId', $userDevKdfId);
+                return redirect('/feeds')->with('success', 'Welcome back '.$userUsername.' , You have Logged in  successfully to keDevForum');
             } else {
                 return redirect()->back()->with('error', 'Incorrect password');
             }

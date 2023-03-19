@@ -13,7 +13,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card-body p-0">
+            <div class="card-body p-5">
                 {{-- Error Handling --}}
                 @if (session('error'))
                     <div class="alert alert-danger">
@@ -27,7 +27,7 @@
                     </div>
                 @endif
 
-                <form action="/postuserfeed" method="POST">
+                <form action="/postuserfeed" method="POST" id='postfeedform'>
                     @csrf
                     <div class="col-md-12">
                         <label for="file-upload" class="custom-file-upload">
@@ -36,20 +36,28 @@
                         <input class="shadow-none form-control rounded-0 resize-none px-x1 border-y-2 border-200"
                             id="post-title" type="text" name="heading" placeholder="Type post heading..." required />
                     </div>
+                    {{-- POST IMAGE --}}
+                    <div class="col-md-12">
+                        <label for="file-upload" class="custom-file-upload">
+                            <i class="fa-solid fa-image"></i> Image
+                        </label>
+                        <input id="file-upload" type="file" name="image" />
+                        <div id="image-holder"></div>
+                    </div>
                     <label for="file-upload" class="custom-file-upload">
                         <i class="fa-solid fa-circle-info"></i> Details
                     </label>
-                    <textarea id="editor" name="description"
+                    <textarea id="editor" name="content"
                         class="ckeditor shadow-none form-control rounded-0 resize-none px-x1 border-y-2 border-200"
                         placeholder="What do you want to talk about?" rows="4" required></textarea>
-                    <div class="d-flex align-items-center ps-x1 border border-200">
+                    {{-- <div class="d-flex align-items-center ps-x1 border border-200">
                         <label class="text-nowrap mb-0 me-2" for="hash-tags">
                             <i class="fa-solid fa-hashtag"></i><span class="fw-medium fs--1">Add
                                 hashtag</span></label><input class="form-control border-0 fs--1 shadow-none" id="hash-tags"
                             type="text" name="hashtag" placeholder="Help the right person to see" required />
-                    </div>
+                    </div> --}}
                     <div class="row g-0 justify-content-between mt-3 px-x1 pb-3">
-                        <div class="col-12">
+                        {{-- <div class="col-12">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="col-md-12">
@@ -144,21 +152,27 @@
 
                             </div>
 
-                        </div>
-                        <style>
-                            button:not(:enabled),
-                            [type=button]:not(:enabled),
-                            [type=reset]:not(:enabled),
-                            [type=submit]:not(:enabled) {
-                                cursor: pointer;
-                            }
-                        </style>
-                        <div class="col-auto">
-                            <input class="btn btn-primary btn-sm px-4 px-sm-5" type="submit" value="POST" />
-                        </div>
+                        </div> --}}
+                    
+                    </div>
+                    <div class="col-12">
+                        <button id="postfeed" class="btn btn-primary text-secondary  d-block w-100 mt-3" type="submit"
+                            name="post" enabled>Devit</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
+    <script>
+        const postfeed = document.getElementById('postfeed');
+        const postfeedform = document.getElementById('postfeedform');
+
+        postfeed.addEventListener('click', function() {
+            //SUBMIT FORM
+            postfeed.disabled = true;
+            postfeed.innerHTML = "Posting New Devit...";
+            postfeedform.submit();
+        });
+    </script>
 @endsection
