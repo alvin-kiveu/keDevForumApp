@@ -88,8 +88,8 @@ class AuthController extends Controller
                                     }
                                     .container a {
                                         text-decoration: none;
-                                        color: #fff;
-                                        background-color: #000;
+                                        color: #03FA6E;
+                                        background-color: #2C3539;
                                         padding: 10px;
                                         border-radius: 5px;
                                         display: block;
@@ -220,7 +220,7 @@ class AuthController extends Controller
                                 <p style="font-size: 16px; color: #000; font-weight: 400;">Click on the link below to reset your password</p>
                             </div>
                             <div style="width: 100%; text-align: center;">
-                                <a href="https://kedevforum.com/resetpassword/' . $randomString  . '" style="text-decoration: none; background-color: #000; color: #fff; padding: 10px 20px; border-radius: 5px;">Reset Password</a>
+                                <a href="https://kedevforum.com/resetpassword/' . $randomString  . '" style="text-decoration: none; background-color: #2C3539; color: #03FA6E; padding: 10px 20px; border-radius: 5px;">Reset Password</a>
                             </div>
                         </div>
                     </div>

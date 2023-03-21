@@ -64,7 +64,21 @@ $feed = DB::table('feeds')
     $userFirstName = $user->fulnames;
     $userUsername = $user->username;
     ?>
-
+<style>
+   @media only screen and (max-width: 600px) {
+     pre{
+       margin-left:0px;
+       width: 70%;
+    }
+    #contentholder p{
+     display: block;
+     width: 70%;
+  }
+}
+</style>
+<script src="/editor/ckeditor.js"></script>
+<link href="/editor/plugins/codesnippet/lib/highlight/styles/monokai_sublime.css" rel="stylesheet">
+<link href="/assets/css/snippetheme.css" rel="stylesheet">
     <div class="col-lg-12">
         <div class="card mb-3 shadow fade-hover">
             <div class="card-header">
@@ -86,7 +100,7 @@ $feed = DB::table('feeds')
                 <hr />
                 <div class="row justify-content-between md-10">
                     <div class="col">
-                        <div class="d-flex">
+                        <div class="d-flex" id="contentholder">
                             <div class="flex-1 align-self-center ms-2">
                                 <p class="mb-1 lh-1 fw-semi-bold"><?php echo $feedTitle; ?></p>
                                 <p class="mb-0 fs--1"><?php echo $feedContent; ?></p>
@@ -200,7 +214,7 @@ $feed = DB::table('feeds')
                                                 href="/dev/<?php echo $commentUserUsername; ?>"><?php echo $commentUserFirstName; ?></a><span
                                                 class="text-600 fw-semi-bold fs--2 ms-2"><?php echo $elapsed; ?></span>
                                         </div>
-                                        <p class="mb-0"><?php echo $commentContent; ?></p>
+                                        <p class="mb-0" ><?php echo $commentContent; ?></p>
                                     </div>
                                 </div>
                             </div>

@@ -1,6 +1,9 @@
 @extends('mainlayout')
 
 @section('content')
+<script src="/editor/ckeditor.js"></script>
+<link href="/editor/plugins/codesnippet/lib/highlight/styles/monokai_sublime.css" rel="stylesheet">
+<link href="/assets/css/snippetheme.css" rel="stylesheet">
     <div class="col-lg-12">
         <div class="card mb-3">
             <div class="card-header bg-light overflow-hidden">

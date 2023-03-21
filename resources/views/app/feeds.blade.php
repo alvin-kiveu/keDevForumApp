@@ -71,7 +71,7 @@ $page = 'feed';
             }
         </style>
 
-        <div class="card mb-3 shadow fade-hover  bounce" id="<?php echo $feedID; ?>">
+        <div id="divitcard" class="card mb-3 shadow fade-hover  bounce" id="<?php echo $feedID; ?>">
             <div class="card-header">
                 <div class="row justify-content-between">
                     <div class="col">
@@ -110,7 +110,7 @@ $page = 'feed';
                         <a href="#" class="read-more-link" style="display: none;">Read More</a>
                     </div>
                 </div>
-                <div class="d-flex align-items-center">
+                <div class="feedsocials align-items-center">
                     <?php
                     //CHECK IF USER HAS UPVOTED OR DOWNVOTED
                     $userDevKdfId = session()->get('userDevKdfId');
@@ -122,7 +122,7 @@ $page = 'feed';
                     if ($checkDevitUp) {
                         $devitUptext = 'text-success';
                     } else {
-                        $devitUptext = 'text-dark';
+                        $devitUptext = 'text';
                     }
                     $checkDevitDown = DB::table('devitupdown')
                         ->where('devitid', $feedID)
@@ -130,20 +130,21 @@ $page = 'feed';
                         ->where('devitype', 'divitdown')
                         ->first();
                     if ($checkDevitDown) {
-                        $devitDowntext = 'text-danger';
+                        $devitDowntext = '';
                     } else {
-                        $devitDowntext = 'text-dark';
+                        $devitDowntext = '';
                     }
                     ?>
-                    <div class="vote-count <?php echo $devitUptext; ?> mx-3"
+   
+                    <div class="vote-count mx-3"
                         onclick="devitUpDown('divitup','<?php echo $feedID; ?>','<?php echo $userDevKdfId = session()->get('userDevKdfId'); ?>')">
                         <i class="fas fa-circle-up"></i> <?php echo $feedDevitup; ?> <small
                             style="font-size:10px;">Devitups</small>
                     </div>
-                    <div class="vote-count <?php echo $devitDowntext; ?> mx-3"
+                    <div class="vote-count mx-3"
                         onclick="devitUpDown('divitdown','<?php echo $feedID; ?>','<?php echo $userDevKdfId = session()->get('userDevKdfId'); ?>')">
                         <i class="fas fa-circle-down"></i> <?php echo $feedDevitdown; ?> <small
-                            style="font-size:10px;">Devitdowns</small>
+                            style="font-size:10px; ">Devitdowns</small>
                     </div>
                     <div class="views-count mx-3">
                         <i class="fas fa-eye"></i> <?php echo $feedViews; ?> <small style="font-size:8px;">Views</small>
@@ -151,6 +152,7 @@ $page = 'feed';
                     <div class="replies-count mx-3" onclick="window.location.href = 'devit/<?php echo $feedID; ?>';">
                         <i class="fas fa-comments"></i> <?php echo $feedComments; ?> <small style="font-size:8px;">Comments</small>
                     </div>
+                
                 </div>
                 <p class="card-text">
                     <small class="text-muted">

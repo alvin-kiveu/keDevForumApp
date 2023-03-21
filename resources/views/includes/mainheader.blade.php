@@ -17,7 +17,7 @@
         if ($page == 'feed') {
             $description = 'Post on kedevforum to get access to the community of developers and programmers who share their knowledge and experience with each other.';
             $keywords = 'kedevforum, kedev, forum, community, developers, programmers, knowledge, experience, post';
-        }  elseif ($page == 'about') {
+        } elseif ($page == 'about') {
             $description = 'About kedevforum to get access to the community of developers and programmers who share their knowledge and experience with each other.';
             $keywords = 'kedevforum, kedev, forum, community, developers, programmers, knowledge, experience, about';
         } elseif ($page == 'contact') {
@@ -29,16 +29,16 @@
         } elseif ($page == 'terms') {
             $description = 'Terms kedevforum to get access to the community of developers and programmers who share their knowledge and experience with each other.';
             $keywords = 'kedevforum, kedev
-            , forum, community, developers, programmers, knowledge, experience, terms';
-        }elseif ($page == 'devitview') {
+                    , forum, community, developers, programmers, knowledge, experience, terms';
+        } elseif ($page == 'devitview') {
             $subdec = $feed->content;
             $subdec = substr($subdec, 0, 50);
             $description = $subdec;
             $keywords = $feed->title;
-        }elseif ($page == 'profileview') {
-            $keywords =  $user->fulnames;
+        } elseif ($page == 'profileview') {
+            $keywords = $user->fulnames;
             $description = "View $user->fulnames profile on kedevforum to get access to the community of developers and programmers who share their knowledge and experience with each other.";
-        }else {
+        } else {
             $description = 'kedevforum is a community of developers and programmers who share their knowledge and experience with each other.';
             $keywords = 'kedevforum, kedev, forum, community, developers, programmers, knowledge, experience';
         }
@@ -88,10 +88,76 @@
     <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cardo&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    {{-- CKEDITOR --}}
-    <script src="/editor/ckeditor.js"></script>
-    <link href="/editor/plugins/codesnippet/lib/highlight/styles/monokai_sublime.css" rel="stylesheet">
     <link href="/assets/css/snippetheme.css" rel="stylesheet">
+    {{-- CKEDITOR --}}
+
+    <style>
+        img[loading="lazy"] {
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .feedsocials {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top-color: #2C3539;
+            border-top-width: 1px;
+            border-top-style: solid;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-bottom-color: #2C3539;
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+            color: #fff;
+            font-weight: 600;
+            padding:3px;
+            border-radius: 3px;
+        }
+        .feedsocials i{
+            font-size: 20px;
+            padding: 5px;
+        }
+        .feedsocials small{
+            font-size: 20px;
+        }
+
+        .feedsocials .vote-count{
+            background-color: rgb(255, 255, 255);
+            color: #000;
+            padding:4px;
+            border-radius: 5px;
+        }
+
+        .feedsocials .replies-count{
+            background-color: rgb(255, 255, 255);
+            color: #000;
+            padding:3px;
+            border-radius: 3px;
+        }
+
+        .feedsocials .views-count{
+            background-color: rgb(255, 255, 255);
+            color: #000;
+            padding:3px;
+            border-radius: 3px;
+        }
+
+       
+       #divitcard .card-header{
+              /* background-color: #2C3539;
+              color: #fff; */
+
+       }
+
+       #divitcard .card-header .fw-semi-bold{
+              /* color: #fff; */
+       }
+       #divitcard .card-header .mb-0{
+              /* color: #03FA6E; */
+       }
+    </style>
 </head>
 
 <body>
