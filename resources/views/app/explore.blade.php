@@ -32,9 +32,9 @@
                                             //Do Nothing
                                         }else{
                                           ?>
-                                    <div class="col-md-3">
+                                    <div id="explorecard" class="col-md-4">
                                         <div class="card">
-                                            <div class="card-body">
+                                            <div class="card-body" onclick="window.location.href = 'dev/<?php echo $row->username; ?>';">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <?php
@@ -42,19 +42,23 @@
                                                         //CHECK IF PROFILE IS EMPTY
                                                         if ($profilepic == '' || $profilepic == null || $profilepic == ' ') {
                                                             $profilephoto = '/assets/img/user.png';
-                                                        }else{
-                                                            $profilephoto = '/images/userprofile/'.$profilepic;
+                                                        } else {
+                                                            $profilephoto = '/images/userprofile/' . $profilepic;
                                                         }
                                                         ?>
-                                                        <img src="<?php echo $profilephoto; ?>" width="100%" height="50px"
+                                                        <img src="<?php echo $profilephoto; ?>" width="100%"
                                                             alt="My Profile Picture" class="rounded mb-2 img-thumbnail">
                                                     </div>
                                                     <div class="col-md-12">
-                                                        <h5 style="font-weight:600;"><?php echo $row->fulnames; ?></h5>
+                                                        <h5 style="font-weight:600;">
+                                                            <?php echo $row->fulnames; ?>
+                                                        </h5>
                                                         <p><?php echo $row->username; ?></p>
                                                         <div class="d-block mb-2">
-                                                            <span class="badge bg-primary">Deviters: <?php echo $userDevter; ?></span>
-                                                            <span class="badge bg-primary">Devees: <?php echo $userDevees; ?></span>
+                                                            <span class="badge bg-primary">Deviters:
+                                                                <?php echo $userDevter; ?></span>
+                                                            <span class="badge bg-primary">Devees:
+                                                                <?php echo $userDevees; ?></span>
                                                         </div>
                                                         <?php
                                                                 $checkDeviter = DB::table('deviters')

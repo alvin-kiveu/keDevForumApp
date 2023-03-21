@@ -27,6 +27,11 @@ $page = 'profileview';
         echo '<script>window.location.href = "/profile";</script>';
     }
     ?>
+     <style>
+        pre {
+            height: 100px;
+        }
+    </style>
     <div class="container">
         <div class="row" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding:5%;">
             <div class="col-md-3">
@@ -176,48 +181,82 @@ $page = 'profileview';
                             <a href="#" class="read-more-link" style="display: none;">Read More</a>
                         </div>
                     </div>
-                    <div class="d-flex align-items-center">
+                    <div class="feedsocials align-items-center">
                         <?php
                         //CHECK IF USER HAS UPVOTED OR DOWNVOTED
                         $userDevKdfId = session()->get('userDevKdfId');
+
+
                         $checkDevitUp = DB::table('devitupdown')
-                            ->where('devitid', $feedID)
-                            ->where('userKdfId', $userDevKdfId)
-                            ->where('devitype', 'divitup')
-                            ->first();
-                        if ($checkDevitUp) {
-                            $devitUptext = 'text-success';
-                        } else {
-                            $devitUptext = 'text-dark';
-                        }
-                        $checkDevitDown = DB::table('devitupdown')
-                            ->where('devitid', $feedID)
-                            ->where('userKdfId', $userDevKdfId)
-                            ->where('devitype', 'divitdown')
-                            ->first();
-                        if ($checkDevitDown) {
-                            $devitDowntext = 'text-danger';
-                        } else {
-                            $devitDowntext = 'text-dark';
-                        }
-                        ?>
-                        <div class="vote-count <?php echo $devitUptext; ?> mx-3"
-                            onclick="devitUpDown('divitup','<?php echo $feedID; ?>','<?php echo $userDevKdfId = session()->get('userDevKdfId'); ?>')">
-                            <i class="fas fa-circle-up"></i> <?php echo $feedDevitup; ?> <small
-                                style="font-size:10px;">Devitups</small>
-                        </div>
-                        <div class="vote-count <?php echo $devitDowntext; ?> mx-3"
-                            onclick="devitUpDown('divitdown','<?php echo $feedID; ?>','<?php echo $userDevKdfId = session()->get('userDevKdfId'); ?>')">
-                            <i class="fas fa-circle-down"></i> <?php echo $feedDevitdown; ?> <small
-                                style="font-size:10px;">Devitdowns</small>
-                        </div>
-                        <div class="views-count mx-3">
-                            <i class="fas fa-eye"></i> <?php echo $feedViews; ?> <small style="font-size:8px;">Views</small>
-                        </div>
-                        <div class="replies-count mx-3">
-                            <i class="fas fa-comments"></i> <?php echo $feedComments; ?> <small
-                                style="font-size:8px;">Comments</small>
-                        </div>
+                        ->where('devitid', $feedID)
+                        ->where('userKdfId', $userDevKdfId)
+                        ->where('devitype', 'divitup')
+                        ->first();
+                    if ($checkDevitUp) {
+                        $devitUptext = '#03FA6E';
+                        $devitUpBg = '#2C3539';
+                    } else {
+                        $devitUptext = '';
+                        $devitUpBg = '';
+                    }
+                    $checkDevitDown = DB::table('devitupdown')
+                        ->where('devitid', $feedID)
+                        ->where('userKdfId', $userDevKdfId)
+                        ->where('devitype', 'divitdown')
+                        ->first();
+                    if ($checkDevitDown) {
+                        $devitDowntext = 'white';
+                        $devitDownBg = '#AF0505';
+                    } else {
+                        $devitDowntext = '';
+                        $devitDownBg = '';
+                    }
+                    ?>
+
+                    <div class="vote-count mx-3" style=" background:<?php echo $devitUpBg; ?>; color:<?php echo $devitUptext; ?>;"
+                        onclick="devitUpDown('divitup','<?php echo $feedID; ?>','<?php echo $userDevKdfId = session()->get('userDevKdfId'); ?>')">
+                      
+                        <i class="fas fa-circle-up"></i>
+                 
+                   
+                        <p><?php echo $feedDevitup; ?> </p>
+                  
+                        <p id="infodata">Devitups</p>
+                     
+
+                    </div>
+                    <div class="vote-count mx-3" style=" background:<?php echo $devitDownBg; ?>; color:<?php echo $devitDowntext; ?>;"
+                        onclick="devitUpDown('divitdown','<?php echo $feedID; ?>','<?php echo $userDevKdfId = session()->get('userDevKdfId'); ?>')">
+                       
+                            <i class="fas fa-circle-down"></i>
+                      
+                            <p><?php echo $feedDevitdown; ?> </p>
+                       
+                            <p id="infodata">Devitdowns</p>
+                        
+                    </div>
+                    <div class="views-count mx-3">
+                  
+                            <i class="fa-regular fa-eye"></i>
+                        
+                            <p> <?php echo $feedViews; ?> </p>
+                    
+                            <p id="infodata">Views</p>
+                      
+
+                    </div>
+                    <div class="replies-count mx-3" onclick="window.location.href = 'devit/<?php echo $feedID; ?>';">
+                       
+                            <i class="fas fa-comments"></i>
+                       
+                            <p><?php echo $feedComments; ?> </p>
+                       
+                            <p id="infodata">Comments</p>
+                        
+
+                    </div>
+
+
                     </div>
                     <p class="card-text">
                         <small class="text-muted">

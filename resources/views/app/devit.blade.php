@@ -1,14 +1,19 @@
 <?php
- $feedID = $id;
+$feedID = $id;
 $page = 'devitview';
 $feed = DB::table('feeds')
-        ->where('feedid', $feedID)
-        ->first();
+    ->where('feedid', $feedID)
+    ->first();
 ?>
 @extends('mainlayout')
 
 @section('content')
     <?php
+    $feedID = $id;
+    $page = 'devitview';
+    $feed = DB::table('feeds')
+        ->where('feedid', $feedID)
+        ->first();
     $userDevKdfId = session()->get('userDevKdfId');
     $feedViews = DB::table('devitviews')
         ->where('devitid', $feedID)
@@ -64,29 +69,27 @@ $feed = DB::table('feeds')
     $userFirstName = $user->fulnames;
     $userUsername = $user->username;
     ?>
-<style>
-   @media only screen and (max-width: 600px) {
-     pre{
-       margin-left:0px;
-       width: 70%;
-    }
-    #contentholder p{
-     display: block;
-     width: 70%;
-  }
-}
-</style>
-<script src="/editor/ckeditor.js"></script>
-<link href="/editor/plugins/codesnippet/lib/highlight/styles/monokai_sublime.css" rel="stylesheet">
-<link href="/assets/css/snippetheme.css" rel="stylesheet">
+
+    <script src="/editor/ckeditor.js"></script>
+    <link href="/editor/plugins/codesnippet/lib/highlight/styles/monokai_sublime.css" rel="stylesheet">
+    <link href="/assets/css/snippetheme.css" rel="stylesheet">
     <div class="col-lg-12">
         <div class="card mb-3 shadow fade-hover">
             <div class="card-header">
                 <div class="row justify-content-between">
                     <div class="col">
                         <div class="d-flex">
-                            <div class="avatar avatar-2xl status-online">
-                                <img class="rounded-circle" src="/assets/img/user.png" alt="" />
+                            <div class="avatar avatar-2xl status">
+                                <?php
+                                $profilepic = $user->profilepic;
+                                //CHECK IF PROFILE IS EMPTY
+                                if ($profilepic == '' || $profilepic == null || $profilepic == ' ') {
+                                    $profilephoto = '/assets/img/user.png';
+                                } else {
+                                    $profilephoto = '/images/userprofile/' . $profilepic;
+                                }
+                                ?>
+                                <img class="rounded-circle" src="<?php echo $profilephoto; ?>" alt="" />
                             </div>
                             <div class="flex-1 align-self-center ms-2">
                                 <p class="mb-1 lh-1"><a class="fw-semi-bold"
@@ -97,18 +100,15 @@ $feed = DB::table('feeds')
                     </div>
 
                 </div>
-                <hr />
+            </div>
+            <div class="card-body">
                 <div class="row justify-content-between md-10">
-                    <div class="col">
-                        <div class="d-flex" id="contentholder">
-                            <div class="flex-1 align-self-center ms-2">
-                                <p class="mb-1 lh-1 fw-semi-bold"><?php echo $feedTitle; ?></p>
-                                <p class="mb-0 fs--1"><?php echo $feedContent; ?></p>
-                            </div>
-                        </div>
+                    <div class="col-12">
+                        <h5 class="card-title"><?php echo $feedTitle; ?></h5>
+                        <div class="card-text"><?php echo $feedContent; ?></div>
                     </div>
                     <hr />
-                    <div class="d-flex align-items-center">
+                    <div class="feedsocials align-items-center">
                         <?php
                         //CHECK IF USER HAS UPVOTED OR DOWNVOTED
                         $userDevKdfId = session()->get('userDevKdfId');
@@ -118,9 +118,11 @@ $feed = DB::table('feeds')
                             ->where('devitype', 'divitup')
                             ->first();
                         if ($checkDevitUp) {
-                            $devitUptext = 'text-success';
+                            $devitUptext = '#03FA6E';
+                            $devitUpBg = '#2C3539';
                         } else {
-                            $devitUptext = 'text-dark';
+                            $devitUptext = '';
+                            $devitUpBg = '';
                         }
                         $checkDevitDown = DB::table('devitupdown')
                             ->where('devitid', $feedID)
@@ -128,28 +130,57 @@ $feed = DB::table('feeds')
                             ->where('devitype', 'divitdown')
                             ->first();
                         if ($checkDevitDown) {
-                            $devitDowntext = 'text-danger';
+                            $devitDowntext = 'white';
+                            $devitDownBg = '#AF0505';
                         } else {
-                            $devitDowntext = 'text-dark';
+                            $devitDowntext = '';
+                            $devitDownBg = '';
                         }
                         ?>
-                        <div class="vote-count <?php echo $devitUptext; ?> mx-3"
+
+                        <div class="vote-count mx-3" style=" background:<?php echo $devitUpBg; ?>; color:<?php echo $devitUptext; ?>;"
                             onclick="devitUpDown('divitup','<?php echo $feedID; ?>','<?php echo $userDevKdfId = session()->get('userDevKdfId'); ?>')">
-                            <i class="fas fa-circle-up"></i> <?php echo $feedDevitup; ?> <small
-                                style="font-size:10px;">Devitups</small>
+
+                            <i class="fas fa-circle-up"></i>
+
+
+                            <p><?php echo $feedDevitup; ?> </p>
+
+                            <p id="infodata">Devitups</p>
+
+
                         </div>
-                        <div class="vote-count <?php echo $devitDowntext; ?> mx-3"
+                        <div class="vote-count mx-3" style=" background:<?php echo $devitDownBg; ?>; color:<?php echo $devitDowntext; ?>;"
                             onclick="devitUpDown('divitdown','<?php echo $feedID; ?>','<?php echo $userDevKdfId = session()->get('userDevKdfId'); ?>')">
-                            <i class="fas fa-circle-down"></i> <?php echo $feedDevitdown; ?> <small
-                                style="font-size:10px;">Devitdowns</small>
+
+                            <i class="fas fa-circle-down"></i>
+
+                            <p><?php echo $feedDevitdown; ?> </p>
+
+                            <p id="infodata">Devitdowns</p>
+
                         </div>
                         <div class="views-count mx-3">
-                            <i class="fas fa-eye"></i> <?php echo $feedViews; ?> <small style="font-size:8px;">Views</small>
+
+                            <i class="fa-regular fa-eye"></i>
+
+                            <p> <?php echo $feedViews; ?> </p>
+
+                            <p id="infodata">Views</p>
+
+
                         </div>
                         <div class="replies-count mx-3">
-                            <i class="fas fa-comments"></i> <?php echo $feedComments; ?> <small
-                                style="font-size:8px;">Comments</small>
+
+                            <i class="fas fa-comments"></i>
+
+                            <p><?php echo $feedComments; ?> </p>
+
+                            <p id="infodata">Comments</p>
+
+
                         </div>
+
                     </div>
 
                 </div>
@@ -214,7 +245,7 @@ $feed = DB::table('feeds')
                                                 href="/dev/<?php echo $commentUserUsername; ?>"><?php echo $commentUserFirstName; ?></a><span
                                                 class="text-600 fw-semi-bold fs--2 ms-2"><?php echo $elapsed; ?></span>
                                         </div>
-                                        <p class="mb-0" ><?php echo $commentContent; ?></p>
+                                        <p class="mb-0"><?php echo $commentContent; ?></p>
                                     </div>
                                 </div>
                             </div>

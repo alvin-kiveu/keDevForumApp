@@ -29,7 +29,7 @@
         } elseif ($page == 'terms') {
             $description = 'Terms kedevforum to get access to the community of developers and programmers who share their knowledge and experience with each other.';
             $keywords = 'kedevforum, kedev
-                    , forum, community, developers, programmers, knowledge, experience, terms';
+                            , forum, community, developers, programmers, knowledge, experience, terms';
         } elseif ($page == 'devitview') {
             $subdec = $feed->content;
             $subdec = substr($subdec, 0, 50);
@@ -89,6 +89,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cardo&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="/assets/css/snippetheme.css" rel="stylesheet">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     {{-- CKEDITOR --}}
 
     <style>
@@ -112,51 +113,106 @@
             border-bottom-style: solid;
             color: #fff;
             font-weight: 600;
-            padding:3px;
-            border-radius: 3px;
+            border-radius: 4px;
         }
-        .feedsocials i{
+
+        .feedsocials i {
+            font-size: 16px;
+        }
+
+        .feedsocials small {
             font-size: 20px;
-            padding: 5px;
-        }
-        .feedsocials small{
-            font-size: 20px;
         }
 
-        .feedsocials .vote-count{
+        .feedsocials p {
+            font-size: 10px;
+
+        }
+
+        .feedsocials .vote-count {
             background-color: rgb(255, 255, 255);
             color: #000;
-            padding:4px;
-            border-radius: 5px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            width: 110px;
+            height: 35px;
+            border: 1px solid rgb(30, 29, 28);
+            padding-bootom: 30px;
         }
 
-        .feedsocials .replies-count{
+        .feedsocials .replies-count {
             background-color: rgb(255, 255, 255);
             color: #000;
-            padding:3px;
-            border-radius: 3px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            width: 110px;
+            height: 35px;
+            border: 1px solid rgb(30, 29, 28);
+            padding-bootom: 30px;
         }
 
-        .feedsocials .views-count{
+        .feedsocials .views-count {
             background-color: rgb(255, 255, 255);
             color: #000;
-            padding:3px;
-            border-radius: 3px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            width: 110px;
+            height: 35px;
+            border: 1px solid rgb(30, 29, 28);
+            padding-bootom: 30px;
         }
 
-       
-       #divitcard .card-header{
-              /* background-color: #2C3539;
-              color: #fff; */
+        .feedsocials .vote-count:hover {
+            background-color: rgb(30, 29, 28);
+            color: #ffffff;
+            border-radius: 10px;
+        }
 
-       }
+        .feedsocials .replies-count:hover {
+            background-color: rgb(30, 29, 28);
+            color: #ffffff;
+            border-radius: 10px;
+        }
 
-       #divitcard .card-header .fw-semi-bold{
-              /* color: #fff; */
-       }
-       #divitcard .card-header .mb-0{
-              /* color: #03FA6E; */
-       }
+        .feedsocials .views-count:hover {
+            background-color: rgb(30, 29, 28);
+            color: #ffffff;
+            border-radius: 10px;
+        }
+
+        .fa-regular {
+            font-size: 15px;
+        }
+        #explorecard .card{
+            margin-bottom: 10%;
+        }
+
+        #explorecard img{
+            height: 200px;
+            object-fit: contain;
+        }
+
+        @media only screen and (max-width: 600px) {
+            #infodata {
+                display: none;
+            }
+
+            .feedsocials {
+                padding: 5px;
+                justify-content: center;
+            }
+
+            .feedsocials i {
+                font-size: 15px;
+                padding-right: 5px;
+            }
+        }
     </style>
 </head>
 

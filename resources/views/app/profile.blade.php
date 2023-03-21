@@ -130,7 +130,11 @@
            
         
         ?>
-
+<style>
+    pre {
+        height: 100px;
+    }
+</style>
             <div class="card mb-3 shadow fade-hover  bounce" id="<?php echo $feedID; ?>">
                 <div class="card-header">
                     <div class="row justify-content-between">
@@ -169,48 +173,81 @@
                             <a href="#" class="read-more-link" style="display: none;">Read More</a>
                         </div>
                     </div>
-                    <div class="d-flex align-items-center">
+                    <div class="feedsocials align-items-center">
                         <?php
                         //CHECK IF USER HAS UPVOTED OR DOWNVOTED
                         $userDevKdfId = session()->get('userDevKdfId');
+
+
                         $checkDevitUp = DB::table('devitupdown')
-                            ->where('devitid', $feedID)
-                            ->where('userKdfId', $userDevKdfId)
-                            ->where('devitype', 'divitup')
-                            ->first();
-                        if ($checkDevitUp) {
-                            $devitUptext = 'text-success';
-                        } else {
-                            $devitUptext = 'text-dark';
-                        }
-                        $checkDevitDown = DB::table('devitupdown')
-                            ->where('devitid', $feedID)
-                            ->where('userKdfId', $userDevKdfId)
-                            ->where('devitype', 'divitdown')
-                            ->first();
-                        if ($checkDevitDown) {
-                            $devitDowntext = 'text-danger';
-                        } else {
-                            $devitDowntext = 'text-dark';
-                        }
-                        ?>
-                        <div class="vote-count <?php echo $devitUptext; ?> mx-3"
-                            onclick="devitUpDown('divitup','<?php echo $feedID; ?>','<?php echo $userDevKdfId = session()->get('userDevKdfId'); ?>')">
-                            <i class="fas fa-circle-up"></i> <?php echo $feedDevitup; ?> <small
-                                style="font-size:10px;">Devitups</small>
-                        </div>
-                        <div class="vote-count <?php echo $devitDowntext; ?> mx-3"
-                            onclick="devitUpDown('divitdown','<?php echo $feedID; ?>','<?php echo $userDevKdfId = session()->get('userDevKdfId'); ?>')">
-                            <i class="fas fa-circle-down"></i> <?php echo $feedDevitdown; ?> <small
-                                style="font-size:10px;">Devitdowns</small>
-                        </div>
-                        <div class="views-count mx-3">
-                            <i class="fas fa-eye"></i> <?php echo $feedViews; ?> <small style="font-size:8px;">Views</small>
-                        </div>
-                        <div class="replies-count mx-3">
-                            <i class="fas fa-comments"></i> <?php echo $feedComments; ?> <small
-                                style="font-size:8px;">Comments</small>
-                        </div>
+                        ->where('devitid', $feedID)
+                        ->where('userKdfId', $userDevKdfId)
+                        ->where('devitype', 'divitup')
+                        ->first();
+                    if ($checkDevitUp) {
+                        $devitUptext = '#03FA6E';
+                        $devitUpBg = '#2C3539';
+                    } else {
+                        $devitUptext = '';
+                        $devitUpBg = '';
+                    }
+                    $checkDevitDown = DB::table('devitupdown')
+                        ->where('devitid', $feedID)
+                        ->where('userKdfId', $userDevKdfId)
+                        ->where('devitype', 'divitdown')
+                        ->first();
+                    if ($checkDevitDown) {
+                        $devitDowntext = 'white';
+                        $devitDownBg = '#AF0505';
+                    } else {
+                        $devitDowntext = '';
+                        $devitDownBg = '';
+                    }
+                    ?>
+
+                    <div class="vote-count mx-3" style=" background:<?php echo $devitUpBg; ?>; color:<?php echo $devitUptext; ?>;"
+                        onclick="devitUpDown('divitup','<?php echo $feedID; ?>','<?php echo $userDevKdfId = session()->get('userDevKdfId'); ?>')">
+                      
+                        <i class="fas fa-circle-up"></i>
+                 
+                   
+                        <p><?php echo $feedDevitup; ?> </p>
+                  
+                        <p id="infodata">Devitups</p>
+                     
+
+                    </div>
+                    <div class="vote-count mx-3" style=" background:<?php echo $devitDownBg; ?>; color:<?php echo $devitDowntext; ?>;"
+                        onclick="devitUpDown('divitdown','<?php echo $feedID; ?>','<?php echo $userDevKdfId = session()->get('userDevKdfId'); ?>')">
+                       
+                            <i class="fas fa-circle-down"></i>
+                      
+                            <p><?php echo $feedDevitdown; ?> </p>
+                       
+                            <p id="infodata">Devitdowns</p>
+                        
+                    </div>
+                    <div class="views-count mx-3">
+                  
+                            <i class="fa-regular fa-eye"></i>
+                        
+                            <p> <?php echo $feedViews; ?> </p>
+                    
+                            <p id="infodata">Views</p>
+                      
+
+                    </div>
+                    <div class="replies-count mx-3" onclick="window.location.href = 'devit/<?php echo $feedID; ?>';">
+                       
+                            <i class="fas fa-comments"></i>
+                       
+                            <p><?php echo $feedComments; ?> </p>
+                       
+                            <p id="infodata">Comments</p>
+                        
+
+                    </div>
+
                     </div>
                     <p class="card-text">
                         <small class="text-muted">
@@ -226,4 +263,59 @@
 
         </div>
     </div>
+    <script>
+        function devitUpDown(divitype, devitid, userKdfId) {
+             //DISBALE CLASS ON CLICK
+
+            //UPDATE DEVIT WITH DEVUP USING AJAX
+            if (userKdfId == '') {
+                var snackbarbtn = document.getElementById("snackbar");
+                snackbarbtn.className = "show";
+                snackbarbtn.innerHTML = "Please login to devitup or devitdown";
+                setTimeout(function() {
+                    snackbarbtn.className = snackbarbtn.className.replace("show", "");
+                }, 3000);
+            } else {
+                let xhr = new XMLHttpRequest();
+                xhr.open('POST', '/api/devitprosessor', true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        // Do something with the response
+                        var jsonData = JSON.parse(xhr.responseText);
+                        //GET STATUS
+                        var status = jsonData.status;
+
+                        var divitype = jsonData.divitype;
+                        if (status == "success") {
+                            if (divitype == 'divitup') {
+                                var audio = new Audio('/assets/sounds/devup.mp3');
+                                //REDEUCE VOLUME
+                            } else if (divitype == 'divitdown') {
+                                var audio = new Audio('/assets/sounds/devdown.mp3');
+                            }
+                            audio.volume = 0.2;
+                            audio.play();
+
+                        }
+                        var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+                        // Reload the page
+                        location.reload();
+
+                        // Set the scroll position to the previously saved value after the page has finished reloading
+                        window.onload = function() {
+                            window.scrollTo(0, scrollPosition);
+                        };
+                    }
+                };
+                let data = {
+                    devitid: devitid,
+                    userKdfId: userKdfId,
+                    divitype: divitype
+                };
+                let payload = JSON.stringify(data);
+                xhr.send(payload);
+            }
+        }
+    </script>
 @endsection

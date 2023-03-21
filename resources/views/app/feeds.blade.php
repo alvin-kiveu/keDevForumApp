@@ -83,8 +83,8 @@ $page = 'feed';
                                 //CHECK IF PROFILE IS EMPTY
                                 if ($profilepic == '' || $profilepic == null || $profilepic == ' ') {
                                     $profilephoto = '/assets/img/user.png';
-                                }else{
-                                    $profilephoto = '/images/userprofile/'.$profilepic;
+                                } else {
+                                    $profilephoto = '/images/userprofile/' . $profilepic;
                                 }
                                 ?>
                                 <img class="rounded-circle" src="<?php echo $profilephoto; ?>" alt="" />
@@ -120,9 +120,11 @@ $page = 'feed';
                         ->where('devitype', 'divitup')
                         ->first();
                     if ($checkDevitUp) {
-                        $devitUptext = 'text-success';
+                        $devitUptext = '#03FA6E';
+                        $devitUpBg = '#2C3539';
                     } else {
-                        $devitUptext = 'text';
+                        $devitUptext = '';
+                        $devitUpBg = '';
                     }
                     $checkDevitDown = DB::table('devitupdown')
                         ->where('devitid', $feedID)
@@ -130,29 +132,57 @@ $page = 'feed';
                         ->where('devitype', 'divitdown')
                         ->first();
                     if ($checkDevitDown) {
-                        $devitDowntext = '';
+                        $devitDowntext = 'white';
+                        $devitDownBg = '#AF0505';
                     } else {
                         $devitDowntext = '';
+                        $devitDownBg = '';
                     }
                     ?>
-   
-                    <div class="vote-count mx-3"
+
+                    <div class="vote-count mx-3" style=" background:<?php echo $devitUpBg; ?>; color:<?php echo $devitUptext; ?>;"
                         onclick="devitUpDown('divitup','<?php echo $feedID; ?>','<?php echo $userDevKdfId = session()->get('userDevKdfId'); ?>')">
-                        <i class="fas fa-circle-up"></i> <?php echo $feedDevitup; ?> <small
-                            style="font-size:10px;">Devitups</small>
+                      
+                        <i class="fas fa-circle-up"></i>
+                 
+                   
+                        <p><?php echo $feedDevitup; ?> </p>
+                  
+                        <p id="infodata">Devitups</p>
+                     
+
                     </div>
-                    <div class="vote-count mx-3"
+                    <div class="vote-count mx-3" style=" background:<?php echo $devitDownBg; ?>; color:<?php echo $devitDowntext; ?>;"
                         onclick="devitUpDown('divitdown','<?php echo $feedID; ?>','<?php echo $userDevKdfId = session()->get('userDevKdfId'); ?>')">
-                        <i class="fas fa-circle-down"></i> <?php echo $feedDevitdown; ?> <small
-                            style="font-size:10px; ">Devitdowns</small>
+                       
+                            <i class="fas fa-circle-down"></i>
+                      
+                            <p><?php echo $feedDevitdown; ?> </p>
+                       
+                            <p id="infodata">Devitdowns</p>
+                        
                     </div>
                     <div class="views-count mx-3">
-                        <i class="fas fa-eye"></i> <?php echo $feedViews; ?> <small style="font-size:8px;">Views</small>
+                  
+                            <i class="fa-regular fa-eye"></i>
+                        
+                            <p> <?php echo $feedViews; ?> </p>
+                    
+                            <p id="infodata">Views</p>
+                      
+
                     </div>
                     <div class="replies-count mx-3" onclick="window.location.href = 'devit/<?php echo $feedID; ?>';">
-                        <i class="fas fa-comments"></i> <?php echo $feedComments; ?> <small style="font-size:8px;">Comments</small>
+                       
+                            <i class="fas fa-comments"></i>
+                       
+                            <p><?php echo $feedComments; ?> </p>
+                       
+                            <p id="infodata">Comments</p>
+                        
+
                     </div>
-                
+
                 </div>
                 <p class="card-text">
                     <small class="text-muted">
@@ -219,6 +249,8 @@ $page = 'feed';
 
     <script>
         function devitUpDown(divitype, devitid, userKdfId) {
+             //DISBALE CLASS ON CLICK
+
             //UPDATE DEVIT WITH DEVUP USING AJAX
             if (userKdfId == '') {
                 var snackbarbtn = document.getElementById("snackbar");
