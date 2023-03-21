@@ -1,0 +1,33 @@
+pre{
+    background-color: #2C3539;
+    border: 1px solid #e1e4e8;
+    border-radius: 3px;
+    font-size: 85%;
+    line-height: 1.45;
+    overflow: auto;
+    padding: 16px;
+    word-wrap: normal;
+    width: 90%;
+    margin: 0 auto;
+    font-family: 'Cardo', serif !important;
+}
+
+code[class*=language-], pre[class*=language-] {
+    color: #03FA6E;
+    font-family: "SFMono-Regular",Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+}
+
+.commentholder{
+    border-radius: 3px;
+    font-size: 85%;
+    line-height: 1.45;
+    overflow: auto;
+    padding: 16px;
+    word-wrap: normal;
+    width: 100%;
+    margin: 0 auto;
+    font-family: 'Cardo', serif !important;
+    height: auto;
+    min-height:10px;
+    max-height:500px;
+}

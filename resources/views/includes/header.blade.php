@@ -9,8 +9,22 @@
   <meta data-react-helmet="true" name="viewport"
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="description" content="keDevForum">
-    <meta name="keywords" content="keDevForum">
-    <meta name="author" content="keDevForum">
+   <?php
+   if (isset($page)) {
+        if ($page == 'login') {
+            $description = 'Login to kedevforum to get access to the community of developers and programmers who share their knowledge and experience with each other.';
+            $keywords = 'kedevforum, kedev, forum, community, developers, programmers, knowledge, experience, login';
+        } elseif ($page == 'register') {
+            $description = 'Register to kedevforum to get access to the community of developers and programmers who share their knowledge and experience with each other.';
+            $keywords = 'kedevforum, kedev, forum, community, developers, programmers, knowledge, experience, register';
+        }
+    }else{
+        $description = 'kedevforum is a community of developers and programmers who share their knowledge and experience with each other.';
+        $keywords = 'kedevforum, kedev, forum, community, developers, programmers, knowledge, experience';
+    }
+   ?>
+    <meta name="description" content="<?php echo $description; ?>">
+    <meta name="keywords" content="<?php echo $keywords; ?>">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow">
@@ -42,7 +56,7 @@
    {{-- INJECTINGIG MY THEME --}}
    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
-   <link rel="stylesheet" href="scss/main.css">
+   <link rel="stylesheet" href="/scss/main.css">
   </head>
   <body>
 

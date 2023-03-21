@@ -32,6 +32,7 @@ class PostFeedController extends Controller
                 'content' => $content,
                 'email' => $email,
                 'views' => '0',
+                'comment' => '0',
                 'postedTime' => \Carbon\Carbon::now(),
                 'devitup' => '0',
                 'devitdown' => '0',

@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DevitControler;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/devitprosessor', [DevitControler::class, 'devitProsessor']);
+Route::post('/devitcomment', [DevitControler::class, 'devitComment']);
+Route::post('/deviteradd', [DevitControler::class, 'deviterAdd']);
+Route::post('/deviterremove', [DevitControler::class, 'deviterRemove']);
+
+

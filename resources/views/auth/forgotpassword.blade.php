@@ -1,3 +1,4 @@
+
 @extends('layout')
 
 @section('content')
@@ -26,7 +27,7 @@
                       </div>
                       @endif
 
-                      <form action="/postuserfeed" method="POST">
+                      <form action="/forgotpassword" method="POST">
                       @csrf
                   <label for="basic-checkbox">Email</label>
                   <div class="mb-3"><input name="email" class="form-control" type="email" placeholder="Email" required/></div>

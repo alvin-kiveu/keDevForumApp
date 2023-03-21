@@ -9,7 +9,7 @@
                         <img class="rounded-circle" src="/assets/img/post.png" alt="" />
                     </div>
                     <div class="flex-1 ms-2">
-                        <h5 class="mb-0 fs-0">Create post</h5>
+                        <h5 class="mb-0 fs-0">Create a Devit</h5>
                     </div>
                 </div>
             </div>
@@ -36,18 +36,11 @@
                         <input class="shadow-none form-control rounded-0 resize-none px-x1 border-y-2 border-200"
                             id="post-title" type="text" name="heading" placeholder="Type post heading..." required />
                     </div>
-                    {{-- POST IMAGE --}}
-                    <div class="col-md-12">
-                        <label for="file-upload" class="custom-file-upload">
-                            <i class="fa-solid fa-image"></i> Image
-                        </label>
-                        <input id="file-upload" type="file" name="image" />
-                        <div id="image-holder"></div>
-                    </div>
+                    
                     <label for="file-upload" class="custom-file-upload">
-                        <i class="fa-solid fa-circle-info"></i> Details
+                        <i class="fa-solid fa-circle-info"></i> Devit Content
                     </label>
-                    <textarea id="editor" name="content"
+                    <textarea id="diviteditor" name="content"
                         class="ckeditor shadow-none form-control rounded-0 resize-none px-x1 border-y-2 border-200"
                         placeholder="What do you want to talk about?" rows="4" required></textarea>
                     {{-- <div class="d-flex align-items-center ps-x1 border border-200">

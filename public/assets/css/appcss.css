@@ -112,6 +112,7 @@ a {
     padding: 5px 0;
     border-radius: 5px;
     margin-top: 10px;
+    display:none;
 }
 
 .nav-btn i {
@@ -181,15 +182,75 @@ a {
     font-family: 'Cardo', serif !important;
 }
 
+#newnotification {
+    position: relative;
+    top: -10px;
+    right: -10px;
+    padding: 2px 6px;
+    font-size: 10px;
+    font-weight: bold;
+    line-height: 1;
+    color: #fff;
+    background-color: #f00;
+    border-radius: 50%;
+  }
+
+  #snackbar {
+    visibility: hidden;
+    width: 80%;
+    background-color: #f00;
+    color: #fff;
+    text-align: left;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 20%;
+    top: 60px;
+    font-size: 17px;
+    height: 50px;
+  }
+  
+  #snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+  
+  @-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+  }
+  
+  @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
 /* WEBSITE RESPONSIVE */
 
 @media only screen and (max-width: 600px) {
+    #snackbar {
+        left:2%;
+    }
     #main {
         width:100%;
         display: none;
     }
     .cancel{
         display: block;
+    }
+    .divideline{
+        display:none;
     }
     #maincontent {
         width: 100%;
