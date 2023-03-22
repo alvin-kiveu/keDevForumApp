@@ -23,7 +23,7 @@ $feed = DB::table('feeds')
             ->where('devitid', $feedID)
             ->where('devkdfid', $userDevKdfId)
             ->first();
-    
+
         if (!$devit) {
             DB::table('devitviews')->insert([
                 'devitid' => $feedID,
@@ -38,17 +38,17 @@ $feed = DB::table('feeds')
     $feedDevitdown = $feed->devitdown;
     $feedComments = $feed->comment;
     $feedUseremail = $feed->email;
-    
+
     //GET DATE POSTED
     $date = DateTime::createFromFormat('Y-m-d H:i:s', $feedTime);
     $feedPostedDate = $date->format('M d Y');
     //GET HOW LONG AFTER POSTED
     $date = new DateTime($feedTime);
     $now = new DateTime();
-    
+
     $diff = $now->diff($date);
     $elapsed = '';
-    
+
     if ($diff->y > 0) {
         $elapsed = $diff->y . ' year' . ($diff->y > 1 ? 's' : '') . ' ago';
     } elseif ($diff->m > 0) {
@@ -188,6 +188,7 @@ $feed = DB::table('feeds')
                 <!-- Comment container -->
                 <div id="comment-container" class="mt-4">
                     <div class="row justify-content-between">
+
                         <div class="commentholder">
                             <?php
                         //GET COMMENTS
@@ -210,10 +211,10 @@ $feed = DB::table('feeds')
                             //GET HOW LONG AFTER POSTED
                             $date = new DateTime($commentDate);
                             $now = new DateTime();
-                            
+
                             $diff = $now->diff($date);
                             $elapsed = '';
-                            
+
                             if ($diff->y > 0) {
                                 $elapsed = $diff->y . ' year' . ($diff->y > 1 ? 's' : '') . ' ago';
                             } elseif ($diff->m > 0) {
@@ -237,15 +238,28 @@ $feed = DB::table('feeds')
 
                             <div class="bg-100 border-top p-3 p-sm-4">
                                 <div class="d-flex align-items-start">
-                                    <div class="avatar avatar-m status-online me-2"><img class="rounded-circle"
-                                            src="/assets/img/user.png" alt="alt" /></div>
+                                    <div class="avatar avatar-m status me-2">
+                                        <?php
+                                        $profilepic = $commentUser->profilepic;
+                                        //CHECK IF PROFILE IS EMPTY
+                                        if ($profilepic == '' || $profilepic == null || $profilepic == ' ') {
+                                            $profilephoto = '/assets/img/user.png';
+                                        } else {
+                                            $profilephoto = '/images/userprofile/' . $profilepic;
+                                        }
+                                        ?>
+                                        <img class="rounded-circle"
+                                            src="<?php echo $profilephoto; ?>" alt="alt" /></div>
                                     <div class="flex-1">
-                                        <div class="d-flex align-items-center"><a
+                                        <div class="d-flex align-items-center">
+                                            <a
                                                 class="fw-bold mb-0 text-decoration-none text-black"
                                                 href="/dev/<?php echo $commentUserUsername; ?>"><?php echo $commentUserFirstName; ?></a><span
                                                 class="text-600 fw-semi-bold fs--2 ms-2"><?php echo $elapsed; ?></span>
                                         </div>
-                                        <p class="mb-0"><?php echo $commentContent; ?></p>
+                                        <div class="contentcomment">
+                                           <p><?php echo $commentContent; ?></p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

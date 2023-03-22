@@ -199,6 +199,9 @@
         }
 
         @media only screen and (max-width: 600px) {
+            .contentcomment .cke_widget_wrapper{
+              width: 300px;
+            }
             #infodata {
                 display: none;
             }
