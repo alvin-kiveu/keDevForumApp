@@ -1,4 +1,4 @@
-### Kedevforum
+# Kedevforum
 
 Kedevforum is an open-source project aimed at providing a platform for tech enthusiasts to connect, collaborate, and discuss various topics related to technology. Whether you're a developer, designer, or simply passionate about technology, Kedevforum offers a space to share ideas, ask questions, and learn from the community.
 
@@ -6,28 +6,28 @@ Kedevforum is an open-source project aimed at providing a platform for tech enth
 User Registration and Authentication: Users can create an account, log in, and manage their profiles.
 Discussion Boards: Engage in conversations by posting questions, sharing insights, or starting discussions on a wide range of tech-related topics.
 
-# Tags and Categories
+### Tags and Categories
  Organize discussions using tags and categories to make it easy to find relevant content.
 
-# Search Functionality
+## Search Functionality
 Users can search for specific discussions or topics of interest.
 
-# Notifications
+## Notifications
  Stay updated with notifications for new replies, mentions, or when someone interacts with your posts.
 
 
-# User Reputation
+## User Reputation
 Encourage active participation and quality contributions by assigning reputation points to users based on their engagement and helpfulness.
 
 
-# Private Messaging
+## Private Messaging
  Users can communicate with each other privately through the messaging system.
 
 
-# Moderation Tools
+## Moderation Tools
 Admins and moderators have access to moderation features to ensure a positive and respectful community environment.
 
-# Responsive Design
+## Responsive Design
 The platform is designed to be accessible and usable across different devices and screen sizes.
 
 
@@ -81,10 +81,10 @@ Kedevforum is released under the UMS License.
 ## Acknowledgements
 We would like to express our gratitude to the following projects and communities for their contributions and inspiration:
 
-# Bootstrap
-# Laravel
-# MySQL
-# Contact
+### Bootstrap
+### Laravel
+### MySQL
+### Contact
 
 
 If you have any questions, suggestions, or feedback, please don't hesitate to reach out to us at support@kedevforum.com.
