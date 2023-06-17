@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostFeedController;
+use App\Http\Controllers\socialauthcontroller;
+use Laravel\Socialite\Facades\Socialite;
 
 
 /*
@@ -90,3 +92,15 @@ Route::post('/postuserfeed', [PostFeedController::class, 'userPostFeed']);
 
 //CREATE A DIVITUP AND DIVITDOWN ROUTE
 
+
+//social auth routes
+Route::get('/auth/github/redirect', [socialauthcontroller::class, 'githubredirect'])->name('githubredirect');
+Route::get('/auth/github/callback', [socialauthcontroller::class, 'githubcallaback'])->name('githubcallaback');
+Route::get('/auth/google/redirect', [socialauthcontroller::class, 'googleredirect'])->name('googleredirect');
+Route::get('/auth/google/callback', [socialauthcontroller::class, 'googlecallaback'])->name('googlecallaback');
+Route::get('/auth/facebook/redirect', [socialauthcontroller::class, 'facebookredirect'])->name('facebookredirect');
+Route::get('/auth/facebook/callback', [socialauthcontroller::class, 'facebookcallaback'])->name('facebookcallaback');
+Route::get('/auth/twitter/redirect', [socialauthcontroller::class, 'twitterredirect'])->name('twitterredirect');
+Route::get('/auth/twitter/callback', [socialauthcontroller::class, 'twittercallaback'])->name('twittercallaback');
+Route::get('/auth/linkedin/redirect', [socialauthcontroller::class, 'linkedinredirect'])->name('linkedinredirect');
+Route::get('/auth/linkedin/callback', [socialauthcontroller::class, 'linkedincallaback'])->name('linkedincallaback');

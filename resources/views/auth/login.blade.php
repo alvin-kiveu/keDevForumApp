@@ -46,8 +46,8 @@
                   <div class="divider-content-center"></div>
                 </div>
                 <div class="row g-2 mt-2">
-                  {{-- <div class="col-sm-6"><a class="btn btn-outline-google-plus btn-sm d-block w-100" href="#"><span class="fab fa-google-plus-g me-2" data-fa-transform="grow-8"></span> google</a></div>
-                  <div class="col-sm-6"><a class="btn btn-outline-facebook btn-sm d-block w-100" href="#"><span class="fab fa-facebook-square me-2" data-fa-transform="grow-8"></span> facebook</a></div> --}}
+                  <div class="col-sm-6"><a class="btn btn-outline-dark btn-outline-facebook btn-sm d-block w-100" href="/auth/github/redirect"><span class="fab fa-github-square me-2" data-fa-transform="grow-8"></span>Github</a></div> 
+                   <div class="col-sm-6"><a class="btn btn-outline-danger btn-outline-google-plus btn-sm d-block w-100" href="/auth/google/redirect"><span class="fab fa-google-plus-g me-2" data-fa-transform="grow-8"></span>Google</a></div>
                 </div>
               </div>
             </div>

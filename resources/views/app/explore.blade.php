@@ -19,8 +19,8 @@
                                     <?php
                                     //GET ALL KeDevForum Users Randomly from the database
                                     $fetchUsers = DB:: table('members')
-                                        ->inRandomOrder()
-                                        ->limit(10)
+                                        // ->inRandomOrder()
+                                        // ->limit(10)
                                         ->get();
                                     //ECHO ALL Users from the database
                                     foreach ($fetchUsers as $row) {

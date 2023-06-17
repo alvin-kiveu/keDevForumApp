@@ -211,13 +211,13 @@ $page = 'feed';
             <div class="card-body fs--1">
                 <?php
                 //GET TRENDING DEVITS WITH HIGHEST VIEWS AND COMMENTS AND DEVITUPS
-                $trendingDevits = DB::table('feeds')->orderBy('devitup', 'desc')->orderBy('devitdown', 'desc')->orderBy('views', 'desc')->orderBy('comment', 'desc')->limit(10)->get();
+                $trendingDevits = DB::table('feeds')->orderBy('devitup', 'desc')->orderBy('comment', 'desc')->limit(10)->get();
                 foreach ($trendingDevits as $trendingDevit) {
                     $trendingDevitID = $trendingDevit->feedid;
                     $trendingDevitTitle = $trendingDevit->title;
                     $trendingDevitUp = $trendingDevit->devitup;
                     $trendingDevitDown = $trendingDevit->devitdown;
-                    $trendingDevitViews = $trendingDevit->views;
+                    $trendingDevitViews = DB::table('devitviews')->where('devitid', $trendingDevitID)->count();
                     $trendingDevitComments = $trendingDevit->comment;
                 ?>
                 <div class="d-flex align-items-center mb-3">

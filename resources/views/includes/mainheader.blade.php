@@ -33,7 +33,7 @@
         } elseif ($page == 'devitview') {
             $subdec = $feed->content;
             $subdec = substr($subdec, 0, 50);
-            $description = $subdec;
+            $description = $feed->title;
             $keywords = $feed->title;
         } elseif ($page == 'profileview') {
             $keywords = $user->fulnames;
@@ -420,7 +420,7 @@
 
 
                 <div class="col-12" id="maincontent">
-                    <div class="container-fluid" id="topbar">
+                    <div class="container-fluid" id="topbar" style="position: sticky; top: 0; left: 0; z-index: 4;">
                         <div class="divideline"></div>
                         <div class="nav-btn" id="bar">
                             <i class="fas fa-bars"></i>

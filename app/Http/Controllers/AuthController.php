@@ -15,16 +15,16 @@ class AuthController extends Controller
 {
     public function registerUser(Request $request)
     {
-        $email = $request->input('email');
-        $username = $request->input('username');
+        $email = htmlentities($request->input('email'), ENT_QUOTES, 'UTF-8');
+        $username = htmlentities($request->input('username'), ENT_QUOTES, 'UTF-8');
         //REMOVE SPACE FROM $username
         $username = str_replace(' ', '', $username);
-        $name = $request->input('name');
+        $name = htmlentities($request->input('name'), ENT_QUOTES, 'UTF-8');
         //capitalize first letter of $name
         $name = ucfirst($name);
         //Genarete random user id
         $devkdfid = rand(1000000000, 9999999999);
-        $password = $request->input('password');
+        $password = htmlentities($request->input('password'), ENT_QUOTES, 'UTF-8');
         //CHECK IF PASSWORDS MATCH
         if (DB::connection()->getDatabaseName()) {
             if ($request->input('password') != $request->input('password_confirmation')) {
@@ -36,7 +36,7 @@ class AuthController extends Controller
                 } else {
                     //HASH PASSWORD
                     $password = bcrypt($password);
-                    $data = array('devkdfid' => $devkdfid, 'fulnames' => $name, 'email' => $email, 'username' => $username, 'password' => $password, 'Deviters' => '0', "Devees" => '0', 'profilepic' => '', 'resetpassword' => '');
+                    $data = array('devkdfid' => $devkdfid, 'fulnames' => $name, 'email' => $email, 'username' => $username, 'password' => $password, 'Deviters' => '0', "Devees" => '0', 'profilepic' => '', 'resetpassword' => '','auth_type' => 'normal');
                     //CHECK IF EMAIL IS ALREADY REGISTERED FROM MYSQL DATABASE ON TABLE users
                     $emailCheck = DB::table('members')->where('email', $email)->first();
                     if ($emailCheck) {

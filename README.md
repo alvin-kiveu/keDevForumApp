@@ -1,92 +1,39 @@
-# Kedevforum
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-Kedevforum is an open-source project aimed at providing a platform for tech enthusiasts to connect, collaborate, and discuss various topics related to technology. Whether you're a developer, designer, or simply passionate about technology, Kedevforum offers a space to share ideas, ask questions, and learn from the community.
+<p align="center">
+<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-## Features
-User Registration and Authentication: Users can create an account, log in, and manage their profiles.
-Discussion Boards: Engage in conversations by posting questions, sharing insights, or starting discussions on a wide range of tech-related topics.
+## About Laravel
 
-### Tags and Categories
- Organize discussions using tags and categories to make it easy to find relevant content.
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-## Search Functionality
-Users can search for specific discussions or topics of interest.
+-   [Simple, fast routing engine](https://laravel.com/docs/routing).
+-   [Powerful dependency injection container](https://laravel.com/docs/container).
+-   Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+-   Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+-   Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+-   [Robust background job processing](https://laravel.com/docs/queues).
+-   [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-## Notifications
- Stay updated with notifications for new replies, mentions, or when someone interacts with your posts.
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
+Make a Controler with the following command:
 
-## User Reputation
-Encourage active participation and quality contributions by assigning reputation points to users based on their engagement and helpfulness.
-
-
-## Private Messaging
- Users can communicate with each other privately through the messaging system.
-
-
-## Moderation Tools
-Admins and moderators have access to moderation features to ensure a positive and respectful community environment.
-
-## Responsive Design
-The platform is designed to be accessible and usable across different devices and screen sizes.
+```bach
+php artisan make:controller AuthController
+```
 
 
-## Getting Started
-To run Kedevforum locally, follow these steps:
+Umeskia kwa kufuata hatua hizi:
 
-1. Clone the repository: git clone https://github.com/alvin-kiveu/keDevForumApp.git
+1.  Create a new database
 
-2. Navigate to the project directory: cd kedevforum
+Run laravel app on mobile  
+```
+php artisan serve --host 192.168.8.118 --port 80
+```
 
-3. Install the dependencies: composer install
-
-4. Configure the environment variables:
-
-5. Create a .env file in the root directory.
-
-6. Copy the contents of .env.example into .env and set the required values.
-
-Set up the database:
-
-Install and set up MySQL.
-
-Update the database configuration in the .env file.
-Run the database migrations: php artisan migrate
-
-Generate the application key: php artisan key:generate
-Start the server: php artisan serve
-Open your browser and visit: http://127.0.0.1:8000/ (or the specified port).
-
-
-## Contributing
-
-Contributions to Kedevforum are welcome and encouraged! If you'd like to contribute, please follow these guidelines:
-
-1. Fork the repository and clone it locally.
-
-2. Create a new branch for your feature/bug fix: git checkout -b my-feature
-
-3. Make your changes and test thoroughly.
-
-4. Commit your changes: git commit -m "Add my feature"
-
-5. Push to the branch: git push origin my-feature
-
-Open a pull request and provide a detailed description of your changes.
-Please ensure your code adheres to the project's coding conventions and includes appropriate tests and documentation.
-
-## License
-Kedevforum is released under the UMS License.
-
-## Acknowledgements
-We would like to express our gratitude to the following projects and communities for their contributions and inspiration:
-
-### Bootstrap
-### Laravel
-### MySQL
-### Contact
-
-
-If you have any questions, suggestions, or feedback, please don't hesitate to reach out to us at support@kedevforum.com.
-
-Happy coding and discussing!
