@@ -29,7 +29,7 @@
         } elseif ($page == 'terms') {
             $description = 'Terms kedevforum to get access to the community of developers and programmers who share their knowledge and experience with each other.';
             $keywords = 'kedevforum, kedev
-                            , forum, community, developers, programmers, knowledge, experience, terms';
+                                , forum, community, developers, programmers, knowledge, experience, terms';
         } elseif ($page == 'devitview') {
             $subdec = $feed->content;
             $subdec = substr($subdec, 0, 50);
@@ -88,6 +88,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cardo&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="/assets/css/snippetheme.css" rel="stylesheet">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     {{-- CKEDITOR --}}
@@ -189,19 +190,21 @@
         .fa-regular {
             font-size: 15px;
         }
-        #explorecard .card{
+
+        #explorecard .card {
             margin-bottom: 10%;
         }
 
-        #explorecard img{
+        #explorecard img {
             height: 200px;
             object-fit: contain;
         }
 
         @media only screen and (max-width: 600px) {
-            .contentcomment .cke_widget_wrapper{
-              width: 300px;
+            .contentcomment .cke_widget_wrapper {
+                width: 300px;
             }
+
             #infodata {
                 display: none;
             }
@@ -334,16 +337,18 @@
                                             <div class="nav-link">Explore</div>
                                         </li>
                                     </a>
-                                    <a href="#" onclick="commitingSoon()" class="col-6">
+
+                                    <a href="/kedevacademy" class="col-6">
                                         <li class="nav-item">
-                                            <i class="fas fa-users"></i>
-                                            <div class="nav-link">Devit Zones</div>
+                                            <i class="fas fa-school"></i>
+                                            <div class="nav-link"><small>KeDev Academy</small></div>
                                         </li>
                                     </a>
-                                    <a href="#" onclick="commitingSoon()" class="col-6">
+
+                                    <a href="#" class="col-6">
                                         <li class="nav-item">
-                                            <i class="fa-regular fa-square-plus"></i>
-                                            <div class="nav-link">Create Zones</div>
+                                            <i class="fas fa-book"></i>
+                                            <div class="nav-link">Enrolled Course</div>
                                         </li>
                                     </a>
 
@@ -353,24 +358,31 @@
                                             <div class="nav-link">Profile</div>
                                         </li>
                                     </a>
-                                    {{-- <a href="#" class="col-6">
-                                            <li class="nav-item">
-                                                <i class="fas fa-question-circle"></i>
-                                                <div class="nav-link">FAQ</div>
-                                            </li>
-                                        </a> --}}
-                                    {{-- <a href="#" class="col-6">
-                                            <li class="nav-item">
-                                                <i class="fas fa-info-circle"></i>
-                                                <div class="nav-link">Terms</div>
-                                            </li>
-                                        </a> --}}
+
+                                    <a href="#" class="col-6">
+                                        <li class="nav-item">
+                                            <i class="fas fa-info-circle"></i>
+                                            <div class="nav-link">Terms</div>
+                                        </li>
+                                    </a> 
+
+                                    <a href="#" class="col-6">
+                                        <li class="nav-item">
+                                            <i class="fas fa-info-circle"></i>
+                                            <div class="nav-link"> policy</div>
+                                        </li>
+                                    </a> 
+                                  
+                                    
                                     <a href="/logout" class="col-6">
                                         <li class="nav-item active">
                                             <i class="fas fa-sign-out-alt"></i>
                                             <div class="nav-link">logout</div>
                                         </li>
                                     </a>
+
+
+                                    
 
                                     <?php
                                 } else {
@@ -379,6 +391,12 @@
                                         <li class="nav-item">
                                             <i class="fa-solid fa-compass"></i>
                                             <div class="nav-link">Explore</div>
+                                        </li>
+                                    </a>
+                                    <a href="/kedevacademy" class="col-6">
+                                        <li class="nav-item">
+                                            <i class="fas fa-school"></i>
+                                            <div class="nav-link"><small>KeDev Academy</small></div>
                                         </li>
                                     </a>
                                     <a href="/login" class="col-6">
@@ -393,18 +411,22 @@
                                             <div class="nav-link">Register</div>
                                         </li>
                                     </a>
-                                    {{-- <a href="#" class="col-6">
-                                        <li class="nav-item">
-                                            <i class="fas fa-question-circle"></i>
-                                            <div class="nav-link">FAQ</div>
-                                        </li>
-                                    </a>
+                                 
+
                                     <a href="#" class="col-6">
                                         <li class="nav-item">
                                             <i class="fas fa-info-circle"></i>
                                             <div class="nav-link">Terms</div>
                                         </li>
-                                    </a> --}}
+                                    </a> 
+
+                                    <a href="#" class="col-6">
+                                        <li class="nav-item">
+                                            <i class="fas fa-info-circle"></i>
+                                            <div class="nav-link"> policy</div>
+                                        </li>
+                                    </a> 
+
 
                                     <?php
                                 }
@@ -420,7 +442,8 @@
 
 
                 <div class="col-12" id="maincontent">
-                    <div class="container-fluid" id="topbar" style="position: sticky; top: 0; left: 0; z-index: 4;">
+                    <div class="container-fluid" id="topbar"
+                        style="position: sticky; top: 0; left: 0; z-index: 4;">
                         <div class="divideline"></div>
                         <div class="nav-btn" id="bar">
                             <i class="fas fa-bars"></i>

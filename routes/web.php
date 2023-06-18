@@ -69,6 +69,11 @@ Route::get('/resetpassword/{id}', function ($id) {
     return view('auth/reset', ['id' => $id]);
 });
 
+//KeDev Academy And KeDev Books Routes
+Route::get('/kedevacademy', function () {
+    return view('acadamy/kedevacademy');
+});
+
 //COMING SOON
 
 //post routes

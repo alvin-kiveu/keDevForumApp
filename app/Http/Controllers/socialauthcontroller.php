@@ -86,7 +86,9 @@ class socialauthcontroller extends Controller
                     $userDevKdfId = $user->devkdfid;
                     $userUsername = $user->username;
                 }
+                $request->session()->put('userEmailLogin', $email);
                 $request->session()->put('userDevKdfId', $userDevKdfId);
+
                 return redirect('/feeds')->with('success', 'Welcome back ' . $userUsername . ' , You have Logged in  successfully to keDevForum');
             } else {
                 return redirect()->back()->with('error', 'Incorrect password');
@@ -103,7 +105,7 @@ class socialauthcontroller extends Controller
                 }
                 if ($userAuthType == "normal") {
                     return redirect()->back()->with('error', 'You have already registered with this email, please login with your password');
-                } 
+                }
             } else {
                 $uuid = Str::uuid()->toString();
                 $devkdfid = rand(1000000000, 9999999999);

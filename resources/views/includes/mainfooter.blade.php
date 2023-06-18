@@ -72,7 +72,7 @@
     <footer class="bg-primary text-white py-3 mt-auto">
         <div class="container">
             <p class="text-center m-0">
-                keDevForum v1.0 developed by
+                keDevForum v1.1 developed by
                 <a href="https://umeskiasoftwares.com/" class="text-white font-weight-bold">Umeskia Softwares</a>
                 &copy; <?php echo date('Y'); ?>
             </p>
